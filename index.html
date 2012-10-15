@@ -112,6 +112,29 @@
           </section>
 
           <section>
+            <h2>Anatomy of a podspec</h2>
+            <pre>
+              <code class="objective-c">
+Pod::Spec.new do |s|
+  s.name     = 'MBProgressHUD'
+  s.version  = '0.5'
+  s.platform = :ios
+  s.license  = 'MIT'
+  s.summary  = 'An iOS activity indicator view.'
+  s.homepage = 'https://github.com/matej/MBProgressHUD'
+  s.author   = { 'Matej Bukovinski' => 'matej@bukovinski.com',
+                 'Jonathan George'  => 'jonathan@jdg.net' }
+
+  s.source   = { :git => 'https://github.com/jdg/MBProgressHUD.git', :tag => '0.5' }
+
+  s.source_files = '*.{h,m}'
+
+  s.framework    = "CoreGraphics"
+end
+            </code>
+            </pre>
+          </section>
+          <section>
             <h1>THE END</h1>
             <h3>Questions?</h3>
           </section>
