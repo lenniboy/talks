@@ -83,9 +83,32 @@
 
           <section>
             <h2>Enter Cocoapods</h2>
-            <p>Library dependency management for Xcode project</p>
-            <p>Community-curated</p>
-            <p>Written in Ruby</p>
+            <ul>
+              <li>Library dependency management for Xcode project</li>
+              <li>Community mainted</li>
+              <li>Written in Ruby</li>
+              <li>Modelled after Rubygems</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Great, how does it work?</h2>
+            <ol>
+              <li>Create an Xcode project</li>
+              <li>Add a <code>Podfile</code> to your project folder</li>
+              <li>Add your dependency to it</li>
+              <li><code>pod install</code></li>
+              <li>Compiles your library dependency as a static library</li>
+              <li>Takes your project and puts it into an Xcode workspace</li>
+              <li>Adds static library to workspace</li>
+              <li>You open <code>App.xcworkspace</code> instead of <code>App.xcproject</code></li>
+              <li class="fragment">Profit!!1!</li>
+            </ol>
+          </section>
+
+          <section>
+            <h2>Demo Time</h2>
+            <img src="MBProgressHUD.png" alt="MBProgressHUD"/>
           </section>
 
           <section>
