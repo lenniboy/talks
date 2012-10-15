@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Cocoapods - sane library management for Xcode</title>
+    <meta name="description" content="">
+    <meta name="author" content="Leonard Ehrenfried">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+      </script>
+
+      <!--[if lt IE 9]>
+      <script src="lib/js/html5shiv.js"></script>
+      <![endif]-->
+    </head>
+
+    <body>
+      <div class="reveal">
+
+        <div class="slides">
+          <section>
+            <br>
+            <h1>cocoapods</h1>
+            <p>Sane library management for Xcode</p>
+            <p>
+              <br>
+            </p>
+            <p>leonard.ehrenfried@gmail.com</p>
+            <p>github.com/lenniboy</p>
+          </section>
+          <section>
+            <br>
+            <h2>So, you're starting a new Xcode Project</h2>
+            <div>
+              <ul>
+                <li>Look for some libraries to use in your project</li>
+                <li>Maybe an OAuth ibrary?</li>
+                <li>How to import it into your project?</li>
+              </ul>
+            </div>
+          </section>
+
+          <section>
+            <h2>Installation instructions</h2>
+              <ol>
+                <li>drag the <code>OAuth2Client.xcodeproj</code> into your project</li>
+                <li>add <code>OAuth2Client</code> as a build dependency</li>
+                <li>add <code>OAuth2Client/**</code> to your user header search path in the build settings</li>
+                <li>link your target against <code>OAuth2Client</code> (drag the OAuth2Client product from OAuth2Client.xcodeproj to your targets&nbsp;<em>Link Binary With Libraries</em>)</li>
+                <li><code>#import "NXOAuth2.h"</code></li>
+              </ol>
+          </section>
+
+          <section>
+            <br/>
+            <br/>
+            <h2>Worst of all?</h2>
+            <h3 class="fragment">The library source is supposed to be added to version control!</h3>
+          </section>
+
+          <section>
+            <h2>Other languages and platforms have automated all of this</h2>
+            <p>Python has <code>easy_install/pip</code></p>
+            <p>Ruby has <code>gem</code></p>
+            <p>JavaScript has <code>npm</code></p>
+            <p>Java has Maven</p>
+            <p class="fragment">Objective-C has ?</p>
+          </section>
+
+          <section>
+            <h2>Enter Cocoapods</h2>
+            <p>Library dependency management for Xcode project</p>
+            <p>Community-curated</p>
+            <p>Written in Ruby</p>
+          </section>
+
+          <section>
+            <h1>THE END</h1>
+            <h3>Questions?</h3>
+          </section>
+        </div>
+      </div>
+
+      <script src="lib/js/head.min.js"></script>
+      <script src="js/reveal.min.js"></script>
+
+      <script>
+
+        // Full list of configuration options available here:
+        // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+
+      theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+      transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+                // Optional libraries used to extend on reveal.js
+      dependencies: [
+                { src: 'lib/js/highlight.js', async: true, callback: function() { window.hljs.initHighlightingOnLoad(); } },
+                { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                { src: 'lib/js/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'lib/js/data-markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'plugin/zoom-js/zoom.js', condition: function() { return !!document.body.classList; } }
+                ]
+                });
+
+    </script>
+
+   </body>
+</html>
