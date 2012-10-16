@@ -9,5 +9,5 @@ task :default => ["deploy"]
 desc "Deploys the content of this folder minus the .git directory"
 task :deploy do
     puts "*** Deploying the site ***"
-    sh "rsync -rvC . #{USER}@#{HOST}:#{PATH}"
+    sh "rsync -rC . #{USER}@#{HOST}:#{PATH}"
 end
