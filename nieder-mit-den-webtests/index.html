@@ -48,15 +48,87 @@
         </section>
 
         <section>
-          <h2>Heads Up</h2>
-          <p>
-            reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
-            support for CSS 3D transforms to see it in its full glory.
-          </p>
+          <h2>Ich gebe es zu</h2>
+          <p>Der Titel is ein bisschen reißerisch.</p>
+          <p class="fragment">tl;dr: Webtests sind nicht an und für sich schlecht, aber oft das falsche Tool.</p>
+        </section>
 
-          <aside class="notes">
-            Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-          </aside>
+        <section>
+          <h2>Überblick</h2>
+          <ol>
+            <li>Disclaimer, Begriffsklärung, Einleitung</li>
+            <li>Wofür sind Webtests gut?</li>
+            <li>Was sind die Probleme von Webtests?</li>
+            <li>Unit tests für JavaScript</li>
+            <li>Umsetztung in Backbone und Angular</li>
+            <li>Schritt für Schritt zu getestetem JavaScript</li>
+          </ol>
+        </section>
+
+        <section>
+          <h2>Disclaimer</h2>
+          <p>Vieles wovon ich spreche bezieht sich auf Webapplikationen und nicht auf Webseiten</p>
+          <p class="fragment">Was ist der Untschied? Wenn die Aufgabe der Seite ist Inhalt zu konumieren, dann ist es ein Webseite. Wenn es darum geht mir der Seite zu interagieren, dann wird es eine Webapplikation.</p>
+        </section>
+
+        <section>
+          <h2>Testing</h2>
+          <p>Ist kein neuer Trend</p>
+          <p>Ziemlich weitläufig als gute Praxis anerkannt</p>
+          <p>TDD hat sich auf Serverseite durchgesetzt</p>
+        </section>
+
+        <section>
+          <h2>BrowserJS Testing</h2>
+          <p>Sehr viel neuer</p>
+          <p class="fragment">Für lange Zeit gab es nicht viel JS, das zu testen war</p>
+          <p class="fragment">JS wurde für lange Zeit nicht Ernst genommen, aber das hat sich sehr geändert</p>
+        </section>
+
+        <section>
+          <h2>Was ist ein Webtest</h2>
+          <p>Webtests sind die Test, die den gesamten Userablauf inklusive der Interaktion mit dem Browser testen.</p>
+          <p>Das bei weitestem beliebteste Tool ist Selenium/Webdriver</p>
+        </section>
+
+        <section>
+          <h2>Nachteile von Webtests</h2>
+            <ul>
+              <li>Langsam: Tests werden nicht vor dem Commit ausgeführt</li>
+              <li>Wartungsaufwändig</li>
+              <li>Sehr grobe Granularität: Unklar was den Test fehlschlagen lassen hat</li>
+              <li>Flaky: Viele <em>false negatives</em>, Entwickler fangen and fehlgeschlagene Tests zu ignoreren</li>
+              <li class="fragment">Keine Unit Tests, sondern Scenariotests</li>
+           </ul>
+        </section>
+
+        <section>
+          <h2>Kleiner Exkurs: Testpyramide</h2>
+          <p>Web tests sind Scenariotests oder bestenfalls Integrationstests</p>
+        </section>
+
+        <section>
+          <h2>Wofür sind Webtests gut?</h2>
+          <p>Einmal alle Schichten durchzutesten</p>
+          <p>Happy path</p>
+        </section>
+        <section>
+          <h2>Testbarkeit</h2>
+          <p>Server-seitiger code von 1998: wahrscheinlich nicht besonders testbar geschrieben</p>
+          <ul>
+            <li>Globale Variablen</li>
+            <li>Statische Methoden</li>
+            <li>Feste Abhängigkeit</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Problemfälle</h2>
+          <ul>
+            <li>DOM-Manipulation</li>
+            <li>AJAX</li>
+            <li>Animationen, <code>setTimeout()</code></li>
+          </ul>
         </section>
 
         <!-- Example of nested vertical slides -->
@@ -383,7 +455,6 @@ function linkify( selector ) {
           { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
           { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
           { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
         ]
       });
 
