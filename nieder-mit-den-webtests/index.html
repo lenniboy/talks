@@ -7,14 +7,14 @@
     <title>Nieder mit den Webtests! Wie man Browser-Javascript richtig testet</title>
 
     <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-    <meta name="author" content="Hakim El Hattab">
+    <meta name="author" content="Leonard Ehrenfried">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/moon.css" id="theme">
 
     <!-- For syntax highlighting -->
@@ -105,6 +105,8 @@
 
         <section>
           <h2>Kleiner Exkurs: Testpyramide</h2>
+          <img style="background: white;" src="img/pyramid.png" alt="test pyramid" />
+          <small><a href="http://martinfowler.com/bliki/TestPyramid.html">http://martinfowler.com/bliki/TestPyramid.html</a></small>
           <p>Web tests sind Scenariotests oder bestenfalls Integrationstests</p>
         </section>
 
@@ -124,7 +126,17 @@
         </section>
 
         <section>
-          <h2>Problemfälle</h2>
+          <h2>Verbesserungen</h2>
+          <ul>
+            <li>DI</li>
+            <li>lokale Variablen</li>
+            <li>polymorphism</li>
+            <li><em>Miško Hevery: Seams (Nähte)</em></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Problemfälle JS Testbarkeit</h2>
           <ul>
             <li>DOM-Manipulation</li>
             <li>AJAX</li>
@@ -132,36 +144,21 @@
           </ul>
         </section>
 
-        <!-- Example of nested vertical slides -->
         <section>
-          <section>
-            <h2>Vertical Slides</h2>
-            <p>
-              Slides can be nested inside of other slides,
-              try pressing <a href="#" class="navigate-down">down</a>.
-            </p>
-            <a href="#" class="image navigate-down">
-              <img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-            </a>
-          </section>
-          <section>
-            <h2>Basement Level 1</h2>
-            <p>Press down or up to navigate.</p>
-          </section>
-          <section>
-            <h2>Basement Level 2</h2>
-            <p>Cornify</p>
-            <a class="test" href="http://cornify.com">
-              <img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
-            </a>
-          </section>
-          <section>
-            <h2>Basement Level 3</h2>
-            <p>That's it, time to go back up.</p>
-            <a href="#/2" class="image">
-              <img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-            </a>
-          </section>
+          <h2>Lösungen: DOM</h2>
+          <ul>
+            <li>Komponenten produzieren nur HTML oder DOM-Knoten</li>
+
+            <li>
+              <pre><code data-trim contenteditable style="">
+var datePicker = new DatePicker();
+var rendered = datePicker.render();
+$("#date-picker").append(rendered);
+              </code></pre>
+            </li>
+            <li class="fragment">Qualitativer Unterschied: Komponente bringt ihr eigenes HTML</li>
+          </ul>
+
         </section>
 
         <section>
