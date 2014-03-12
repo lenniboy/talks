@@ -1,6 +1,6 @@
 PWD=$(shell pwd)
 BASENAME=`basename $(PWD)`
-CSS_URL=http://bootswatch.com/lumen/bootstrap.min.css
+CSS_URL=//netdna.bootstrapcdn.com/bootswatch/3.1.1/lumen/bootstrap.min.css
 
 .phony: all
 
@@ -11,3 +11,4 @@ rsync:
 
 pandoc:
 	pandoc README.md -f markdown -t html5 -s -c $(CSS_URL) -o index.html
+	sed -i 's/<body>/<body class="container">/g' index.html
