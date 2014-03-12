@@ -136,13 +136,26 @@
         </section>
 
         <section>
-          <h2>Problemfälle JS Testbarkeit</h2>
+          <h2>Problemfälle der JS-Testbarkeit</h2>
           <ul>
             <li>DOM-Manipulation</li>
             <li>AJAX</li>
             <li>Animationen, <code>setTimeout()</code></li>
           </ul>
         </section>
+
+        <section>
+          <h2>Probleme: DOM</h2>
+          <ul>
+            <li>Direkter Zugriff aufs DOM ist Gift für Testbarkeit</li>
+            <li>
+              <pre><code data-trim contenteditable style="">
+$(".datepicker").datePicker();
+              </code></pre>
+            </li>
+          </ul>
+        </section>
+
 
         <section>
           <h2>Lösungen: DOM</h2>
@@ -156,53 +169,75 @@ var rendered = datePicker.render();
 $("#date-picker").append(rendered);
               </code></pre>
             </li>
-            <li class="fragment">Qualitativer Unterschied: Komponente bringt ihr eigenes HTML</li>
+            <li class="fragment">Kompenenten dürfen nur auf ihrem "eigenen" HTML operieren</li>
+            <li class="fragment">Bedeutet natürlich, dass serverseitige Templatingsprachen die Testbarkeit radikal verschlechtern</li>
           </ul>
-
         </section>
 
         <section>
-          <h2>Slides</h2>
-          <p>
-            Not a coder? No problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slid.es" target="_blank">http://slid.es</a>.
-          </p>
-        </section>
-
-        <section>
-          <h2>Point of View</h2>
-          <p>
-            Press <strong>ESC</strong> to enter the slide overview.
-          </p>
-          <p>
-            Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-          </p>
-        </section>
-
-        <section>
-          <h2>Works in Mobile Safari</h2>
-          <p>
-            Try it out! You can swipe through the slides and pinch your way to the overview.
-          </p>
-        </section>
-
-        <section>
-          <h2>Marvelous Unordered List</h2>
+          <h2>Probleme: AJAX</h2>
           <ul>
-            <li>No order here</li>
-            <li>Or here</li>
-            <li>Or here</li>
-            <li>Or here</li>
+            <li>Benötigt laufenden Server, der antworten zurückschickt</li>
+            <li>Macht Testsetup komplizierter und -ausführung langsamer</li>
+            <li>Ziel sollte sein Tests ohne Server laufen zu lassen</li>
           </ul>
         </section>
 
         <section>
-          <h2>Fantastic Ordered List</h2>
-          <ol>
-            <li>One is smaller than...</li>
-            <li>Two is smaller than...</li>
-            <li>Three!</li>
-          </ol>
+          <h2>Lösungen: AJAX</h2>
+          <ul>
+            <li>In server-seitigem Code with DAO-Schicht gemockt</li>
+          </ul>
+          <ul class="fragment">
+            <li>Globales <code>XMLHttpRequest</code> monkey-patchen</li>
+            <li>Oder Mock Http-Service injecten</li>
+          </ul>
         </section>
+
+        <section data-background-transition="slide" data-background="#000623" >
+          <h2>Exkurs: sinon.js</h2>
+          <ul>
+            <li>Sehr beliebte Library um HTTP zu mocken</li>
+          </ul>
+
+            <pre><code data-trim contenteditable style="">
+var fakeAjax = function(func) {
+  var xhr = sinon.useFakeXMLHttpRequest();
+  var requests = [];
+  xhr.onCreate = function(xhr){
+    requests.push(xhr);
+  }
+  try {
+    func(requests);
+  }
+  catch (e){
+    throw e;
+  }
+  finally {
+    xhr.restore();
+  }
+});
+            </code></pre>
+        </section>
+
+        <section data-background="#000623" >
+          <h2>Anwendung</h2>
+            <pre><code data-trim contenteditable style="">
+fakeAjax(function(requests){
+  var customer = new Customer({ id:1234 });
+  customer.fetch();
+  var req = requests[0];
+  req.respond(200, {id : 1234, name: "Horst Kasuppke"});
+
+  expect(customer.get("name")).toBe("Horst Kasuppke");
+});
+            </code></pre>
+          <ul>
+            <li>Führt zu einem deterministischen Test ohne implizites Warten</li>
+          </ul>
+        </section>
+
+
 
         <section data-markdown>
           <script type="text/template">
