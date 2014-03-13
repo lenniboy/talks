@@ -147,7 +147,7 @@
         <section>
           <h2>Probleme: DOM</h2>
           <ul>
-            <li>Direkter Zugriff aufs DOM ist Gift für Testbarkeit</li>
+            <li>Direkter Zugriff aufs DOM ist Gift für Testbarkeit!</li>
             <li>
               <pre><code data-trim contenteditable style="">
 $(".datepicker").datePicker();
@@ -186,7 +186,7 @@ $("#date-picker").append(rendered);
         <section>
           <h2>Lösungen: AJAX</h2>
           <ul>
-            <li>In server-seitigem Code with DAO-Schicht gemockt</li>
+            <li>In server-seitigem Code mit DAO-Schicht gemockt</li>
           </ul>
           <ul class="fragment">
             <li>Globales <code>XMLHttpRequest</code> monkey-patchen</li>
@@ -237,38 +237,23 @@ fakeAjax(function(requests){
           </ul>
         </section>
 
-
-
-        <section data-markdown>
-          <script type="text/template">
-            ## Markdown support
-
-            For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-
-            ```
-            <section data-markdown>
-              ## Markdown support
-
-              For those of you who like that sort of thing.
-              Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-            </section>
-            ```
-          </script>
-        </section>
-
-        <section id="transitions">
-          <h2>Transition Styles</h2>
-          <p>
-            You can select from different transitions, like: <br>
-            <a href="?transition=cube#/transitions">Cube</a> -
-            <a href="?transition=page#/transitions">Page</a> -
-            <a href="?transition=concave#/transitions">Concave</a> -
-            <a href="?transition=zoom#/transitions">Zoom</a> -
-            <a href="?transition=linear#/transitions">Linear</a> -
-            <a href="?transition=fade#/transitions">Fade</a> -
-            <a href="?transition=none#/transitions">None</a> -
-            <a href="?#/transitions">Default</a>
-          </p>
+        <section></section>
+          <h2>Probleme: Animationen, setTimeout()</h2>
+          <ul>
+            <li>Animationen arbeiten oft mit <code>setTimeout</code></li>
+          </ul>
+            <pre><code data-trim contenteditable style="">
+var callbackCalled = false;
+jasmine.Clock.useMock();
+setTimeout(function() {
+  callbackCalled = true;
+}, 100);
+jasmine.Clock.tick(101);
+expect(callbackCalled).toBe(true);
+            </code></pre>
+          <ul>
+            <li>Tests könnnen ohne implizite Waits ausgeführt werden und bleiben blitzschnell</li>
+          </ul>
         </section>
 
         <section id="themes">
