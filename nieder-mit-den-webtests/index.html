@@ -116,6 +116,7 @@
           <p>Einmal alle Schichten durchzutesten</p>
           <p>Happy path</p>
         </section>
+
         <section data-background-transition="slide" data-background="#830009">
           <h2>Testbarkeit</h2>
           <p>Server-seitiger code von 1998: wahrscheinlich nicht besonders testbar geschrieben</p>
@@ -162,7 +163,6 @@ $(".datepicker").datePicker();
           <h2>Lösungen: DOM</h2>
           <ul>
             <li>Komponenten produzieren nur HTML oder DOM-Knoten</li>
-
             <li>
               <pre><code data-trim>
 var datePicker = new DatePicker();
@@ -183,6 +183,21 @@ $("#date-picker").append(rendered);
             <li>HTML-Schnipsel nicht global aus dem DOM holen!</li>
             <li>Als explizite Abhängigkeiten definieren, z.B. mit requireJS</li>
           </ul>
+        </section>
+
+        <section>
+          <h2>Beispiel RequireJS Text Plugin</h2>
+          <pre><code data-trim>
+define(["text!templates/view.html"], function(template){
+  return function(){
+    var div = $("&lt;div&gt;").html(template);
+    div.delegate("a", "click", function(){
+      div.find("h1").css("color", "red");
+    });
+    return div;
+  };
+});
+          </code></pre>
         </section>
 
         <section>
