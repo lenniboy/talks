@@ -68,12 +68,12 @@
         <section>
           <h2>Disclaimer</h2>
           <p>Vieles wovon ich spreche bezieht sich auf Webapplikationen und nicht auf Webseiten</p>
-          <p class="fragment">Was ist der Untschied? Wenn die Aufgabe der Seite ist Inhalt zu konumieren, dann ist es ein Webseite. Wenn es darum geht mir der Seite zu interagieren, dann wird es eine Webapplikation.</p>
+          <p class="fragment">Was ist der Untschied? Wenn die Aufgabe der Seite ist Inhalt zu konsumieren, dann ist es ein Webseite. Wenn es darum geht mir der Seite zu interagieren, dann wird es eine Webapplikation.</p>
         </section>
 
         <section>
           <h2>Testing</h2>
-          <p>Ist kein neuer Trend</p>
+          <p>Ist kein neuer Trend - Kent Becks SUnit wurde 1998 released</p>
           <p>Ziemlich weitläufig als gute Praxis anerkannt</p>
           <p>TDD hat sich auf Serverseite durchgesetzt</p>
         </section>
@@ -203,7 +203,7 @@ define(["text!templates/view.html"], function(template){
         <section>
           <h2>Probleme: AJAX</h2>
           <ul>
-            <li>Benötigt laufenden Server, der antworten zurückschickt</li>
+            <li>Benötigt laufenden Server, der Antworten zurückschickt</li>
             <li>Macht Testsetup komplizierter und -ausführung langsamer</li>
             <li>Ziel sollte sein Tests ohne Server laufen zu lassen</li>
           </ul>
@@ -307,6 +307,19 @@ fakeAjax(function(requests){
   expect(view.$el.find("ul li").size()).toBe(2);
 });
           </code></pre>
+        </section>
+
+        <section>
+          <h2>Schritt für Schritt zu einem testbaren Frontend</h2>
+          <h3>Theoretische Verbesserungen</h3>
+          <ul>
+            <li>Am wichtigsten: Bewusstsein für Frontend-Probleme</li>
+            <li>Für viele Software-Shops wird zuletzt über das Frontend gedacht</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Hello world</h2>
         </section>
 
         <section>
