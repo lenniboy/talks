@@ -284,12 +284,16 @@ expect(callbackCalled).toBe(true);
         </section>
 
         <section>
+          <h1>MVC Frameworks</h1>
+        </section>
+
+        <section>
           <h2>Backbone</h2>
           <ul>
             <li>Sehr frühes, minimalistisches Frontend-MVC Framework</li>
             <li>Gute Wahl für Apps mit niedriger Komplexität und recht wenig Features</li>
             <li>Sehr testbar, da sehr simpel strukturiert</li>
-            <li>Muss sich allerdings selbst Disziplin auferlegen</li>
+            <li>Muss sich allerdings Disziplin selbst auferlegen</li>
           </ul>
         </section>
 
@@ -297,12 +301,12 @@ expect(callbackCalled).toBe(true);
           <h2>Wie tested man eine Backbone View?</h2>
           <pre><code data-trim>
 fakeAjax(function(requests){
-  var view = new MainView();
+  var view = new FooView();
   view.render();
   var req = requests[0];
   req.respond(200, [
-    { name: "Guido von Rossum" },
-    { name: "Brenda Eich" }]);
+    { name: "Guido van Rossum" },
+    { name: "Brendan Eich" }]);
   view.$el.find("button").click();
   expect(view.$el.find("ul li").size()).toBe(2);
 });
@@ -310,11 +314,41 @@ fakeAjax(function(requests){
         </section>
 
         <section>
-          <h2>Engines</h2>
+          <h2>Angular</h2>
+          <ul>
+            <li>Im Moment der Darling der JavaScript-Welt</li>
+            <li>Generell sehr testbar aufgebaut: MVC, DI, Separation of Concerns, Controllers, Mocks</li>
+            <li>Author (Miško Hevery) ist ein bekannter Testing-Coach</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Angulars Stärken</h2>
+          <ul>
+            <li>Sehr mächtige Templating-Sprache</li>
+            <li>Testen ist wird sehr groß geschrieben</li>
+            <li>Alle Abhängigkeiten können injected werden</li>
+            <li>ajax, <code>window</code>, <code>document</code>, <code>setTimeout</code> können einfach gemockt werden</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Schwächen (nicht viele)</h2>
+          <ul>
+            <li>Steile Lernkurve</li>
+            <li>Controllers werden ohne HTML-Templates getestet</li>
+            <li>Verlässt sich auf sogenannte "end-to-end"-Tests</li>
+            <li class="fragment">Fühlt sich wie ein Webtest an</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Engines: wie führe ich meine Tests aus?</h2>
           <ul>
             <li>Während der Entwicklung: Browser (<a href="http://momentjs.com/test/">Demo</a>)</li>
             <li>PhantomJS: Headless Webkit browser</li>
             <li>Experimentell: node.js mit contextify</li>
+            <li>Gründlich, aber aufwendig: In allen Zielbrowsern</li>
           </ul>
         </section>
 
@@ -329,10 +363,15 @@ fakeAjax(function(requests){
             <li>Am wichtigsten: Bewusstsein für Frontend-Probleme schaffen</li>
             <ul>
               <li>Frontend-Entwicklung eine Priorität machen</li>
-              <li>selbe Rigorosität anwenden wie für die Backend-Entwicklung</li>
+              <li>Gleiche Rigorosität anwenden wie für die Backend-Entwicklung</li>
               <li>Fontend-Spezialisten einstellen</li>
             </ul>
+            <li>Toxischen IE-Support beenden</li>
           </ul>
+        </section>
+
+        <section>
+          <em>Sorgen der Frontend-Entwickler Ernst nehmen.</em>
         </section>
 
         <section>
@@ -350,7 +389,7 @@ fakeAjax(function(requests){
         <section>
           <h2>Meine Empfehlungen für Libraries</h2>
           <ul>
-            <li>Jasmine als Testrunner</li>
+            <li>Jasmine als Testframework</li>
             <li>Sinon für HTTP Mocking</li>
             <li>Handlebars für client-side Templating</li>
             <li>Backbone für kleinere Apps</li>
