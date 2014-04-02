@@ -49,12 +49,12 @@
 
         <section>
           <h2>Ich gebe es zu</h2>
-          <p>Der Titel is ein bisschen reißerisch.</p>
+          <p>Der Titel ist ein bisschen reißerisch.</p>
           <p class="fragment">tl;dr: Webtests sind nicht an und für sich schlecht, aber oft das falsche Tool.</p>
         </section>
 
         <section>
-          <h2>Überblick</h2>
+          <h2>Agenda</h2>
           <ol>
             <li>Disclaimer, Begriffsklärung, Einleitung</li>
             <li>Wofür sind Webtests gut?</li>
@@ -62,33 +62,37 @@
             <li>Unit Tests für JavaScript</li>
             <li>Umsetztung in Backbone und Angular</li>
             <li>Schritt für Schritt zu getestetem JavaScript</li>
+            <li>Q&A</li>
           </ol>
         </section>
 
         <section>
           <h2>Disclaimer</h2>
-          <p>Vieles wovon ich spreche bezieht sich auf Webapplikationen und nicht auf Webseiten</p>
-          <p class="fragment">Was ist der Untschied? Wenn die Aufgabe der Seite ist Inhalt zu konsumieren, dann ist es ein Webseite. Wenn es darum geht mir der Seite zu interagieren, dann wird es eine Webapplikation.</p>
+          <p>Vieles, wovon ich spreche, bezieht sich auf Web-Applikationen und nicht auf Webseiten.</p>
+          <p class="fragment">Was ist der Untschied? <br> Wenn der Zweck der Seite ist, Inhalt zu präsentieren, dann ist es eine Webseite. <br>
+              Wenn es darum geht, mit der Seite zu interagieren, dann ist es eine Web-Applikation.
+          </p>
         </section>
 
         <section>
           <h2>Testing</h2>
-          <p>Ist kein neuer Trend - Kent Becks SUnit wurde 1998 released</p>
+          <p>Ist kein neuer Trend - Kent Becks <code>SUnit</code> wurde 1998 released</p>
           <p>Ziemlich weitläufig als gute Praxis anerkannt</p>
           <p>TDD hat sich auf Serverseite durchgesetzt</p>
         </section>
 
         <section>
-          <h2>BrowserJS Testing</h2>
+          <h2>Browser JS Testing</h2>
           <p>Sehr viel neuer</p>
           <p class="fragment">Für lange Zeit gab es nicht viel JS, das zu testen war</p>
-          <p class="fragment">JS wurde für lange Zeit nicht Ernst genommen, aber das hat sich sehr geändert</p>
+          <p class="fragment">JS wurde für lange Zeit nicht ernst genommen, aber das hat sich sehr geändert</p>
         </section>
 
         <section>
-          <h2>Was ist ein Webtest</h2>
+          <h2>Was ist ein Webtest?</h2>
           <p>Webtests sind die Test, die den gesamten Userablauf inklusive der Interaktion mit dem Browser testen.</p>
-          <p>Das bei weitestem beliebteste Tool ist Selenium/Webdriver</p>
+          <p>Ziel: Fährt das Auto?</p>
+          <p>Das bei weitestem beliebteste Tool ist Selenium/Webdriver.</p>
         </section>
 
         <section>
@@ -96,9 +100,9 @@
             <ul>
               <li>Langsam: Tests werden nicht vor dem Commit ausgeführt</li>
               <li>Wartungsaufwändig: Asynchronität führt zu vielen Problemen</li>
-              <li>Sehr grobe Granularität: Unklar was den Test fehlschlagen lassen hat</li>
+              <li>Sehr grobe Granularität: Unklar, was den Test fehlschlagen lassen hat</li>
               <li>Nonlokalität: schwierig ein Szenario unter Test aufzubauen</li>
-              <li>Nondeterministisch und flaky: Viele <em>false negatives</em>, Entwickler fangen and fehlgeschlagene Tests zu ignoreren</li>
+              <li>Nondeterministisch und flaky: Viele <em>false negatives</em>, Entwickler fangen an fehlgeschlagene Tests zu ignoreren</li>
               <li>Schlechte Debuggability: Man kann nicht durch die Tests steppen, da der Browser unabhängig vom Testrunner ist </li>
               <li class="fragment">Keine Unit Tests, sondern Scenariotests</li>
            </ul>
@@ -108,7 +112,7 @@
           <h2>Kleiner Exkurs: Testpyramide</h2>
           <img style="background: white;" src="img/pyramid.png" alt="test pyramid" />
           <small><a href="http://martinfowler.com/bliki/TestPyramid.html">http://martinfowler.com/bliki/TestPyramid.html</a></small>
-          <p>Web tests sind UI Tests!</p>
+          <p>Webtests sind UI Tests!</p>
         </section>
 
         <section>
@@ -119,7 +123,7 @@
 
         <section data-background-transition="slide" data-background="#830009">
           <h2>Testbarkeit</h2>
-          <p>Server-seitiger code von 1998: wahrscheinlich nicht besonders testbar geschrieben</p>
+          <p>Server-seitiger Code von 1998: wahrscheinlich nicht besonders testbar geschrieben</p>
           <ul>
             <li>Globale Variablen</li>
             <li>Statische Methoden</li>
@@ -131,13 +135,8 @@
           <h2>Verbesserungen</h2>
           <ul>
             <li>DI</li>
-            <li>lokale Variablen</li>
-            <li>polymorphism, "ask, don't tell"</li>
-            <li><em>Miško Hevery: Seams (Nähte)</em></li>
-          </ul>
-        </section>
-
-        <section>
+            <li>Lokale Variablen</li>
+            <li>Polymorphism, "ask, don't tell"</li>
           <h2>Problemfälle der JS-Testbarkeit</h2>
           <ul>
             <li>DOM-Manipulation</li>
@@ -205,7 +204,7 @@ define(["text!templates/view.html"], function(template){
           <ul>
             <li>Benötigt laufenden Server, der Antworten zurückschickt</li>
             <li>Macht Testsetup komplizierter und -ausführung langsamer</li>
-            <li>Ziel sollte sein Tests ohne Server laufen zu lassen</li>
+            <li>Ziel sollte sein, Tests ohne Server laufen zu lassen</li>
           </ul>
         </section>
 
@@ -216,20 +215,20 @@ define(["text!templates/view.html"], function(template){
           </ul>
           <ul class="fragment">
             <li>Globales <code>XMLHttpRequest</code> monkey-patchen</li>
-            <li>Oder Mock Http-Service injecten</li>
+            <li>Oder Mock HTTP-Service injecten</li>
           </ul>
         </section>
 
         <section data-background-transition="slide" data-background="#000623" >
           <h2>Exkurs: sinon.js</h2>
-            <p>Sehr beliebte Library um HTTP zu mocken</p>
+            <p>Sehr beliebte Library, um HTTP zu mocken</p>
 
             <pre><code data-trim>
 var fakeAjax = function(func) {
   var xhr = sinon.useFakeXMLHttpRequest();
   var requests = [];
-  xhr.onCreate = function(xhr){
-    requests.push(xhr);
+  xhr.onCreate = function(request){
+    requests.push(request);
   }
   func(requests);
   xhr.restore();
@@ -255,7 +254,7 @@ fakeAjax(function(requests){
         <section>
           <h2>Probleme: Animationen, setTimeout()</h2>
           <ul>
-            <li>Animationen arbeiten oft mit <code>setTimeout</code></li>
+            <li>Animationen arbeiten oft mit <code>setTimeout()</code></li>
           </ul>
             <pre><code data-trim>
 var callbackCalled = false;
@@ -273,14 +272,15 @@ expect(callbackCalled).toBe(true);
 
         <section>
           <h2>Fazit bis hierhin</h2>
-          <p>JS ist oft höchst asynchron und mit einem zweiten Programm/VM
-             sinnvolle Asserts zu schreiben ist extrem wartungsaufwändig</p>
-          <p>Um schnelle Unit Tests für Browser JS zu schreiben müssen wir viel
-             näher an den Code als es mit Selenium möglich ist</p>
+          <p>JS ist oft höchst asynchron.</p>
+          <p>Mit einem zweiten Programm/VM
+             sinnvolle Asserts zu schreiben ist extrem wartungsaufwändig.</p>
+          <p>Um schnelle Unit Tests für Browser JS zu schreiben, müssen wir viel
+             näher an den Code, als es mit Selenium möglich ist.</p>
         </section>
 
         <section>
-          <em>Um Frontendcode testbar zu machen müssen wir ihn aus den Klauen des Servers befreien.</em>
+          <h3>Um Frontendcode testbar zu machen, müssen wir ihn aus den Klauen des Servers befreien.</h3>
         </section>
 
         <section>
@@ -298,7 +298,7 @@ expect(callbackCalled).toBe(true);
         </section>
 
         <section>
-          <h2>Wie tested man eine Backbone View?</h2>
+          <h2>Wie testet man eine Backbone View?</h2>
           <pre><code data-trim>
 fakeAjax(function(requests){
   var view = new FooView();
@@ -318,7 +318,7 @@ fakeAjax(function(requests){
           <ul>
             <li>Im Moment der Darling der JavaScript-Welt</li>
             <li>Generell sehr testbar aufgebaut: MVC, DI, Separation of Concerns, Controllers, Mocks</li>
-            <li>Author (Miško Hevery) ist ein bekannter Testing-Coach</li>
+            <li>Autor (Miško Hevery) ist ein bekannter Testing-Coach</li>
           </ul>
         </section>
 
@@ -326,7 +326,7 @@ fakeAjax(function(requests){
           <h2>Angulars Stärken</h2>
           <ul>
             <li>Sehr mächtige Templating-Sprache</li>
-            <li>Testen ist wird sehr groß geschrieben</li>
+            <li>Testen wird sehr groß geschrieben</li>
             <li>Alle Abhängigkeiten können injected werden</li>
             <li>ajax, <code>window</code>, <code>document</code>, <code>setTimeout</code> können einfach gemockt werden</li>
           </ul>
@@ -346,8 +346,8 @@ fakeAjax(function(requests){
           <h2>Engines: wie führe ich meine Tests aus?</h2>
           <ul>
             <li>Während der Entwicklung: Browser (<a href="http://momentjs.com/test/">Demo</a>)</li>
-            <li>PhantomJS: Headless Webkit browser</li>
-            <li>Experimentell: node.js mit contextify</li>
+            <li>PhantomJS: headless Webkit</li>
+            <li>Experimentell: node.js mit jsdom, contextify</li>
             <li>Gründlich, aber aufwendig: In allen Zielbrowsern</li>
           </ul>
         </section>
@@ -362,16 +362,16 @@ fakeAjax(function(requests){
             <li>In vielen Software-Shops wird zuletzt über das Frontend gedacht</li>
             <li>Am wichtigsten: Bewusstsein für Frontend-Probleme schaffen</li>
             <ul>
-              <li>Frontend-Entwicklung eine Priorität machen</li>
+              <li>Frontend-Entwicklung zu einer Priorität machen</li>
               <li>Gleiche Rigorosität anwenden wie für die Backend-Entwicklung</li>
-              <li>Fontend-Spezialisten einstellen</li>
+              <li>Frontend-Spezialisten einstellen</li>
             </ul>
             <li>Toxischen IE-Support beenden</li>
           </ul>
         </section>
 
         <section>
-          <em>Sorgen der Frontend-Entwickler Ernst nehmen.</em>
+          <h3>Sorgen der Frontend-Entwickler ernst nehmen.</h3>
         </section>
 
         <section>
@@ -396,14 +396,17 @@ fakeAjax(function(requests){
             <li>Angular für komplexere Apps</li>
           </ul>
         </section>
+
         <section>
-          <h1>THE END</h1>
-          <h3>Leonard Ehrenfried</h3>
-          <h4>Hire me: <a href="http://leonard.io/hire-me/">http://leonard.io/hire-me/</a></h4>
+          <h2>Zusammenfassung</h2>
+          <h3>Um einen Scheibenwischer zu testen, muss man keine Probefahrt im Regen machen.</h3>
         </section>
 
         <section>
-          <h1>Fragen?</h1>
+          <h1>THE END - FRAGEN?</h1>
+          <h3>Leonard Ehrenfried</h3>
+          <h3>Slides: <a href="http://leonard.io/talks/">http://leonard.io/talks/</a></h3>
+          <h3>Hire me: <a href="http://leonard.io/hire-me/">http://leonard.io/hire-me/</a></h3>
         </section>
 
       </div>
