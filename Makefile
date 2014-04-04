@@ -7,7 +7,7 @@ CSS_URL=//netdna.bootstrapcdn.com/bootswatch/3.1.1/lumen/bootstrap.min.css
 all: pandoc rsync
 
 rsync:
-	rsync -rvC . lenni@leonard.io:www/$(BASENAME) --exclude=Makefile
+	rsync -rC . lenni@leonard.io:www/$(BASENAME) --exclude=Makefile
 
 pandoc:
 	pandoc README.md -f markdown -t html5 -s -c $(CSS_URL) -o index.html
