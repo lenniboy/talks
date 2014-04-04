@@ -121,7 +121,7 @@
           <p>Happy path</p>
         </section>
 
-        <section data-background-transition="slide" data-background="#830009">
+        <section data-background-transition="none" data-background="#000623" >
           <h2>Testbarkeit</h2>
           <p>Server-seitiger Code von 1998: wahrscheinlich nicht besonders testbar geschrieben</p>
           <ul>
@@ -131,7 +131,7 @@
           </ul>
         </section>
 
-        <section>
+        <section data-background-transition="none" data-background="#000623" >
           <h2>Verbesserungen</h2>
           <ul>
             <li>DI</li>
@@ -222,7 +222,7 @@ define(["text!templates/view.html"], function(template){
           </ul>
         </section>
 
-        <section data-background-transition="slide" data-background="#000623" >
+        <section data-background-transition="none" data-background="#000623" >
           <h2>Exkurs: sinon.js</h2>
             <p>Sehr beliebte Library, um HTTP zu mocken</p>
 
@@ -239,7 +239,7 @@ var fakeAjax = function(func) {
             </code></pre>
         </section>
 
-        <section data-background="#000623" >
+        <section data-background-transition="none" data-background="#000623" >
           <h2>Anwendung</h2>
             <pre><code data-trim>
 fakeAjax(function(requests){
