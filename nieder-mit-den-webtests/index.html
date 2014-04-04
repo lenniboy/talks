@@ -139,7 +139,7 @@
             <li>Polymorphism, "ask, don't tell"</li>
         </section>
 
-        <section>
+        <section data-background-transition="none" data-background="#024873" >
           <h2>Problemfälle der JS-Testbarkeit</h2>
           <ul>
             <li>DOM-Manipulation</li>
@@ -148,7 +148,7 @@
           </ul>
         </section>
 
-        <section>
+        <section data-background-transition="none" data-background="#024873" >
           <h2>Probleme: DOM</h2>
           <ul>
             <li>Direkter Zugriff aufs DOM ist Gift für Testbarkeit!</li>
@@ -160,8 +160,7 @@ $(".datepicker").datePicker();
           </ul>
         </section>
 
-
-        <section>
+        <section data-background-transition="none" data-background="#024873" >
           <h2>Lösungen: DOM</h2>
           <ul>
             <li>Komponenten produzieren nur HTML oder DOM-Knoten</li>
@@ -177,7 +176,7 @@ $("#date-picker").append(rendered);
           </ul>
         </section>
 
-        <section>
+        <section data-background-transition="none" data-background="#024873" >
           <h2>HTML und JS</h2>
           <ul>
             <li>HTML enthält oft Logik</li>
@@ -187,7 +186,7 @@ $("#date-picker").append(rendered);
           </ul>
         </section>
 
-        <section>
+        <section data-background-transition="none" data-background="#024873" >
           <h2>Beispiel RequireJS Text Plugin</h2>
           <pre><code data-trim>
 define(["text!templates/view.html"], function(template){
@@ -202,7 +201,7 @@ define(["text!templates/view.html"], function(template){
           </code></pre>
         </section>
 
-        <section>
+        <section data-background-transition="none" data-background="#024873" >
           <h2>Probleme: AJAX</h2>
           <ul>
             <li>Benötigt laufenden Server, der Antworten zurückschickt</li>
@@ -211,7 +210,7 @@ define(["text!templates/view.html"], function(template){
           </ul>
         </section>
 
-        <section>
+        <section data-background-transition="none" data-background="#024873" >
           <h2>Lösungen: AJAX</h2>
           <ul>
             <li>In server-seitigem Code mit DAO-Schicht gemockt</li>
@@ -254,7 +253,7 @@ fakeAjax(function(requests){
           <p>Führt zu einem deterministischen Test ohne implizites Warten</p>
         </section>
 
-        <section>
+        <section data-background-transition="none" data-background="#024873" >
           <h2>Probleme: Animationen, setTimeout()</h2>
           <ul>
             <li>Animationen arbeiten oft mit <code>setTimeout()</code></li>
