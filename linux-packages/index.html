@@ -45,311 +45,170 @@
         <section>
           <h2>A developer's approach to build, host and deploy native Linux packages</h2>
           <p>
-            Leonard Ehrenfried - Freelance Consultant
-            <br>
+            Leonard Ehrenfried - Freelance Developer
+          </p>
+          <p>
             <a href="http://leonard.io">http://leonard.io</a>
+          </p>
+          <p>
+            <small>(available for hire)</small>
           </p>
         </section>
 
         <section>
-          <h2>About me and my current project</h2>
+          <h3>About me and my current project</h3>
           <ul>
             <li>Freelance developer here in Berlin</li>
             <li>Current client: Startup where I wrote a Scala web service</li>
+            <li>No dedicated DevOps staff up until 2 weeks ago</li>
+            <li>Did DevOps myself</li>
+            <li>Always very ops-minded and had the fortune of working together with really talented DevOps previously</li>
           </ul>
           </p>
-
-        </section>
-
-        <!-- Example of nested vertical slides -->
-        <section>
-          <section>
-            <h2>Vertical Slides</h2>
-            <p>
-              Slides can be nested inside of other slides,
-              try pressing <a href="#" class="navigate-down">down</a>.
-            </p>
-            <a href="#" class="image navigate-down">
-              <img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-            </a>
-          </section>
-          <section>
-            <h2>Basement Level 1</h2>
-            <p>Press down or up to navigate.</p>
-          </section>
-          <section>
-            <h2>Basement Level 2</h2>
-            <p>Cornify</p>
-            <a class="test" href="http://cornify.com">
-              <img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
-            </a>
-          </section>
-          <section>
-            <h2>Basement Level 3</h2>
-            <p>That's it, time to go back up.</p>
-            <a href="#/2" class="image">
-              <img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-            </a>
-          </section>
         </section>
 
         <section>
-          <h2>Slides</h2>
-          <p>
-            Not a coder? No problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slid.es" target="_blank">http://slid.es</a>.
-          </p>
-        </section>
-
-        <section>
-          <h2>Point of View</h2>
-          <p>
-            Press <strong>ESC</strong> to enter the slide overview.
-          </p>
-          <p>
-            Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-          </p>
-        </section>
-
-        <section>
-          <h2>Works in Mobile Safari</h2>
-          <p>
-            Try it out! You can swipe through the slides and pinch your way to the overview.
-          </p>
-        </section>
-
-        <section>
-          <h2>Marvelous Unordered List</h2>
+          <h3>How to deploy</h3>
           <ul>
-            <li>No order here</li>
-            <li>Or here</li>
-            <li>Or here</li>
-            <li>Or here</li>
+            <li>For a while we did <code>git pull && sbt stage</code></li>
+            <li>Obviously worst of all solutions</li>
+            <li>Scala compilation is slooooow</li>
+            <li>Scales horribly: each node has to compile separately</li>
+            <li>We needed to improve that as we neared the launch</li>
           </ul>
         </section>
 
         <section>
-          <h2>Fantastic Ordered List</h2>
-          <ol>
-            <li>One is smaller than...</li>
-            <li>Two is smaller than...</li>
-            <li>Three!</li>
-          </ol>
-        </section>
-
-        <section data-markdown>
-          <script type="text/template">
-            ## Markdown support
-
-            For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-
-            ```
-            <section data-markdown>
-              ## Markdown support
-
-              For those of you who like that sort of thing.
-              Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-            </section>
-            ```
-          </script>
-        </section>
-
-        <section id="transitions">
-          <h2>Transition Styles</h2>
-          <p>
-            You can select from different transitions, like: <br>
-            <a href="?transition=cube#/transitions">Cube</a> -
-            <a href="?transition=page#/transitions">Page</a> -
-            <a href="?transition=concave#/transitions">Concave</a> -
-            <a href="?transition=zoom#/transitions">Zoom</a> -
-            <a href="?transition=linear#/transitions">Linear</a> -
-            <a href="?transition=fade#/transitions">Fade</a> -
-            <a href="?transition=none#/transitions">None</a> -
-            <a href="?#/transitions">Default</a>
-          </p>
-        </section>
-
-        <section id="themes">
-          <h2>Themes</h2>
-          <p>
-            Reveal.js comes with a few themes built in: <br>
-            <a href="?#/themes">Default</a> -
-            <a href="?theme=sky#/themes">Sky</a> -
-            <a href="?theme=beige#/themes">Beige</a> -
-            <a href="?theme=simple#/themes">Simple</a> -
-            <a href="?theme=serif#/themes">Serif</a> -
-            <a href="?theme=night#/themes">Night</a> <br>
-            <a href="?theme=moon#/themes">Moon</a> -
-            <a href="?theme=solarized#/themes">Solarized</a>
-          </p>
-          <p>
-            <small>
-              * Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
-            </small>
-          </p>
+          <h3>Enter DevOps</h3>
+          <ul>
+            <li>Obvious first step: Compile on Jenkins</li>
+            <li>But how to copy onto nodes?</li>
+            <li class="fragment"><code>web-service.tar.gz</code>?</li>
+          </ul>
         </section>
 
         <section>
-          <h2>Global State</h2>
-          <p>
-            Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-            will be added as a class to the document element when the slide is open. This lets you
-            apply broader style changes, like switching the background.
-          </p>
+          <h3>Packaging</h3>
+          <ul>
+            <li>Every Linux distro has already an excellent mechanism for putting files on a computer</li>
+            <li><code>apt-get, yum, pacman ...</code></li>
+            <li>Very good solution to the depoyment problem</li>
+            <li>Used by previous two customers/employers</li>
+            <li>But... quite complicated to set up</li>
+            <li>Problems: Building debs, maintaining APT repository</li>
+          </ul>
         </section>
 
-        <section data-state="customevent">
-          <h2>Custom Events</h2>
+        <section>
+          <h3>Building debs, pt 1</h3>
+          <ul>
+            <li>Fantastic sbt plugin: <code>sbt-native-packager</code></li>
+            <li>Extremely easy to set up: took about 30 minutes to turn Scala project into a deb</li>
+            <li>No messing about with Debian files: It just works!</li>
+            <li>Very good defaults</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Building debs, pt 2</h3>
+          <ul>
+            <li>App main content is at: <code>/usr/share/$appname</code></li>
+            <li>Jars (compiled code + deps): <code>/usr/share/$appname/lib</code></li>
+            <li>Startup script: <code>/usr/share/$appname/bin/$appname</code></li>
+            <li>Conf files: <code>/usr/share/$appname/conf</code> (symlinked to <code>/etc/$appname</code>)</li>
+            <li>Upstart script: <code>/etc/init/$appname.conf</code></li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Upstart</h3>
+          <ul>
+            <li>Has actually been around for a while but I never used it until the current project</li>
+            <li>Seriously simple startup scripts</li>
+            <li>Godsend for anyone who had the misfortune to write/debug spagetti <code>init.d</code> scripts</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Upstart conf example</h3>
           <p>
-            Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-          </p>
           <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-Reveal.addEventListener( 'customevent', function() {
-  console.log( '"customevent" has fired' );
-} );
+description "Relayr web service for administering users, devices, transmitters and apps"
+author "Relayr Team &lt;team@relayr.io&gt;"
+
+start on runlevel [2345]
+start on started [networking]
+stop on runlevel [016]
+stop on stopping [networking]
+
+respawn
+respawn limit 5 60
+
+chdir /usr/share/registration
+setuid registration
+
+exec ./bin/registration
           </code></pre>
         </section>
 
         <section>
-          <section data-background="#007777">
-            <h2>Slide Backgrounds</h2>
-            <p>
-              Set <code>data-background="#007777"</code> on a slide to change the full page background to the given color. All CSS color formats are supported.
-            </p>
-            <a href="#" class="image navigate-down">
-              <img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-            </a>
-          </section>
-          <section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
-            <h2>Image Backgrounds</h2>
-            <pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-          </section>
-          <section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" data-background-repeat="repeat" data-background-size="100px">
-            <h2>Repeated Image Backgrounds</h2>
-            <pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-          </section>
-        </section>
-
-        <section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
-          <h2>Background Transitions</h2>
-          <p>
-            Pass reveal.js the <code>backgroundTransition: 'slide'</code> config argument to make backgrounds slide rather than fade.
-          </p>
-        </section>
-
-        <section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
-          <h2>Background Transition Override</h2>
-          <p>
-            You can override background transitions per slide by using <code>data-background-transition="slide"</code>.
-          </p>
-        </section>
-
-        <section>
-          <h2>Clever Quotes</h2>
-          <p>
-            These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-            &ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-          </p>
-          <blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-            &ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-            reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-          </blockquote>
-        </section>
-
-        <section>
-          <h2>Pretty Code</h2>
-          <pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-          </code></pre>
-          <p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-        </section>
-
-        <section>
-          <h2>Intergalactic Interconnections</h2>
-          <p>
-            You can link between slides internally,
-            <a href="#/2/3">like this</a>.
-          </p>
-        </section>
-
-        <section>
-          <section id="fragments">
-            <h2>Fragmented Views</h2>
-            <p>Hit the next arrow...</p>
-            <p class="fragment">... to step through ...</p>
-            <ol>
-              <li class="fragment"><code>any type</code></li>
-              <li class="fragment"><em>of view</em></li>
-              <li class="fragment"><strong>fragments</strong></li>
-            </ol>
-
-            <aside class="notes">
-              This slide has fragments which are also stepped through in the notes window.
-            </aside>
-          </section>
-          <section>
-            <h2>Fragment Styles</h2>
-            <p>There's a few styles of fragments, like:</p>
-            <p class="fragment grow">grow</p>
-            <p class="fragment shrink">shrink</p>
-            <p class="fragment roll-in">roll-in</p>
-            <p class="fragment fade-out">fade-out</p>
-            <p class="fragment highlight-red">highlight-red</p>
-            <p class="fragment highlight-green">highlight-green</p>
-            <p class="fragment highlight-blue">highlight-blue</p>
-            <p class="fragment current-visible">current-visible</p>
-            <p class="fragment highlight-current-blue">highlight-current-blue</p>
-          </section>
-        </section>
-
-        <section>
-          <h2>Spectacular image!</h2>
-          <a class="image" href="http://lab.hakim.se/meny/" target="_blank">
-            <img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
-          </a>
-        </section>
-
-        <section>
-          <h2>Export to PDF</h2>
-          <p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an example that's been uploaded to SlideShare.</p>
-          <iframe id="slideshare" src="http://www.slideshare.net/slideshow/embed_code/13872948" width="455" height="356" style="margin:0;overflow:hidden;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
-          <script>
-            document.getElementById('slideshare').attributeName = 'allowfullscreen';
-          </script>
-        </section>
-
-        <section>
-          <h2>Take a Moment</h2>
-          <p>
-            Press b or period on your keyboard to enter the 'paused' mode. This mode is helpful when you want to take distracting slides off the screen
-            during a presentation.
-          </p>
-        </section>
-
-        <section>
-          <h2>Stellar Links</h2>
+          <h3>How to control Upstart jobs</h3>
           <ul>
-            <li><a href="http://slid.es">Try the online editor</a></li>
-            <li><a href="https://github.com/hakimel/reveal.js">Source code on GitHub</a></li>
-            <li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
+            <li>Very much like <code>service</code></li>
+            <li><code>sudo start $appname</code></li>
+            <li><code>sudo status $appname</code></li>
+            <li><code>sudo stop $appname</code></li>
           </ul>
         </section>
 
         <section>
-          <h1>THE END</h1>
-          <h3>BY Hakim El Hattab / hakim.se</h3>
+          <h2>Ok, so now we have a deb. Now what?</h2>
+        </section>
+
+        <section>
+          <h3>Private Debian repository: the story so far</h3>
+          <ul>
+            <li>Jenkins builds deb</li>
+            <li>Copies deb to repo server</li>
+            <li>Repo server re-indexes complete repository with <code>dpkg-scanpackages</code> and friends</li>
+            <li>Sloooow: At a previous project the last step alone took ~10 minutes</li>
+            <li>Optional: Use <code>s3cmd</code> to upload to S3 (also slow for large repos)</li>
+            <li>Complicated beast: brought seasoned DevOps to tears</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Enter <code>deb-s3</code></h3>
+          <ul>
+            <li>Since we are an AWS shop hosting on S3 is a no-brainer - we don't need yet another
+                piece of infrastructure to build, maintain, monitor</li>
+            <li><code>deb-s3</code> lets you skip the repo server step</li>
+            <li>Sets up repository structure if it doesn't exist</li>
+            <li>Parses existing <code>Packages.gz</code> and adds a package as you go along</li>
+            <li>From deb file and empty bucket to full repository server in less than 1 minute</li>
+            <li>Supports multiple versions in one repository, and signing with GPG</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Installing deb on local node</h3>
+          <ul>
+            <li>Use <code>apt-transport-s3</code> to make <code>apt</code> speak the S3 protocol</li>
+            <li>Not in the Ubuntu repositories but PPA is available</li>
+            <li>Access is managed with ordinary AWS IAM</li>
+            <li><code>sudo apt-get install $appname</code></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Demo time!</h2>
+        </section>
+
+        <section>
+          <h1>The End</h1>
+          <h2>Questions?</h2>
+          <br/>
+          <h4>Hire me! <a href="http://leonard.io">http://leonard.io</a></h4>
         </section>
 
       </div>
