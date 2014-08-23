@@ -1,0 +1,30 @@
+- Scala webservice
+  Long compilation times
+  We knew we wanted DevOps but we also knew that it was complicated
+
+- Previous 2 employers/customers used native packaging: Debian/RPM
+  Very good solution but complicated and time-consuming
+  Particularly maintaing a package repository is complicated and has brought
+  seasoned dev-ops close to tears.
+  dpkg-scanpackages
+
+  So since we are an Amazon shop we don't want to build, maintain, monitor
+  yet another server so we want to host on S3 since it has practically
+  unlimited disk space.
+
+  So far: build slaves build debs, scp to mirror of package repository,
+  adds it to its repository and rebuilds the entire repository. Unoptimised
+  took about 10-15 minutes. Then upload to S3 with s3cmd which is also
+  calculating hashes again.
+
+  deb-s3: Ruby gem for uploading deb files to an S3 bucket. If necessary 
+  creates repository layout. From deb to repository ready to download in 
+  < 1 minute
+
+- Demo start with an empty bucket, have Debian package, upload to S3
+- Install package on prepared Vagrant box
+
+- Upstart
+  Has been around for quite a while but I have used in this project for the
+  first time.
+
