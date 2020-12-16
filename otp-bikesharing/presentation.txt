@@ -20,6 +20,25 @@
 
 ![image](bike-sharing-stuttgart.png)
 
+## Konfiguration
+
+```
+{
+  "updaters": [
+    {
+      "id": "bike-rental",
+      "type": "bike-rental",
+      "frequencySec": 60,
+      "sourceType": "gbfs",
+      "url": "https://www.nextbike.ba/bs/sarajevo/",
+      "network": "nextbike"
+    }
+  ]
+}
+
+```
+[http://docs.opentripplanner.org/en/latest/Configuration/#gbfs-configuration](http://docs.opentripplanner.org/en/latest/Configuration/#gbfs-configuration)
+
 ## Exkurs: Wo ist Multimodalität schneller?
 
 - Vorstände von Verkehrsunternehmen lieben Multimodalität
@@ -80,10 +99,11 @@ Kernentwickler auf die Entwicklung von OTP2 konzentriert hat.
 
 ## Fragen?
 
-Leonard Ehrenfried
+### Holger Bruch
 
-Freiberuflicher Software-Entwickler
+[http://systect.de](http://systect.de) - [holger.bruch@systect.de](mailto:holger.bruch@systect.de)
+
+### Leonard Ehrenfried
 
 [https://leonard.io](https://leonard.io) - [mail@leonard.io](mailto:mail@leonard.io)
-
 
