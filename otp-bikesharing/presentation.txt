@@ -1,0 +1,89 @@
+% Bike sharing im OpenTripPlanner
+% Leonard Ehrenfried - [https://leonard.io](https://leonard.io)
+% 16. Dezember 2020
+
+# Was es upstream gibt
+
+## Was es upstream gibt
+
+- Bike sharing
+  - Begin der Route an einer Station oder einem free-floating Rad
+  - Abgabe nur an einer Station
+- Multimodales Routing unter Einbindung von Leihrädern
+
+## Beispiele
+
+![image](bike-sharing-böblingen.png)
+
+
+## Beispiele
+
+![image](bike-sharing-stuttgart.png)
+
+## Exkurs: Wo ist Multimodalität schneller?
+
+- Vorstände von Verkehrsunternehmen lieben Multimodalität
+- Ist aber selten schneller
+- Da wo die Dichte an Fahrrädern/Rollern hoch ist, gibt es auch viele
+  Busse und U-Bahnen.
+
+## Daten
+
+![image](bike-sharing-ulm-1.png)
+
+
+## Wie bekommt man die Daten in den OTP
+
+- Gibt eine Vielzahl von Importern im OTP Code.
+- Am Ende hat sich GBFS durchgesetzt und dominiert die Benutzung.
+- Positionen der Fahrräder wird permanent upgedatet.
+
+# Erweiterung gesponsert durch die Stadt Ulm
+
+
+## Was haben Holger und ich erweitert
+
+- Neue Rückgabemodi:
+  - Free-floating
+  - Rückgabe ausserhalb einer Station, aber mit Warnung
+
+## Beispiel
+
+![image](bike-sharing-herrenberg.png)
+
+## Beispiel
+
+![image](bike-sharing-ulm-2.png)
+
+## Selber ausprobieren
+
+
+- [https://herrenberg.stadtnavi.de/](https://herrenberg.stadtnavi.de/)
+- [https://digitransit.im.verschwoerhaus.de/](https://digitransit.im.verschwoerhaus.de/)
+
+# Exkurs: Die Forks des OTP
+
+## OTP Entwicklung
+
+- Für eine lange Zeit hat die Entwicklung von OTP stagniert, da sich die
+Kernentwickler auf die Entwicklung von OTP2 konzentriert hat.
+- Es war sehr schwer patches upstream zu kommen.
+- Hatte zur Folge, dass Forks wie Pilze aus dem Boden geschossen sind.
+
+## Die Forks des OTP
+
+- [Upstream](https://github.com/opentripplanner/OpenTripPlanner/)
+  - [IBI Group](https://github.com/ibi-group/OpenTripPlanner/): Free-floating bike/Roller/Taxi sharing
+  - [Helsinki](https://github.com/HSLdevcom/opentripplanner): GraphQl API
+    - [mfdz](https://github.com/mfdz/OpenTripPlanner): Free-floating bike sharing, portiert von IBI
+- Noch mindestens ein anderer grosser deutscher Mobilitätskonzern
+
+## Fragen?
+
+Leonard Ehrenfried
+
+Freiberuflicher Software-Entwickler
+
+[https://leonard.io](https://leonard.io) - [mail@leonard.io](mailto:mail@leonard.io)
+
+
